@@ -1,6 +1,6 @@
 package com.capital.gains.tax.app.adapters.stock.in.web;
 
-import com.capital.gains.tax.app.adapters.ApiConfig;
+import com.capital.gains.tax.app.adapters.infrastructure.ApiConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,5 +1,8 @@
-package com.capital.gains.tax.app.adapters;
+package com.capital.gains.tax.app.adapters.infrastructure;
 
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class ApiConfig {
 
     public final static String API = "/api";

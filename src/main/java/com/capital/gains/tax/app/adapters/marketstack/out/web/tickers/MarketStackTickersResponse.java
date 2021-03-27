@@ -1,7 +1,6 @@
 package com.capital.gains.tax.app.adapters.marketstack.out.web.tickers;
 
 import com.capital.gains.tax.app.adapters.marketstack.out.web.common.Pagination;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
