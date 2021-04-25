@@ -1,5 +1,6 @@
 package com.capital.gains.tax.app.adapters.infrastructure;
 
+import java.net.URI;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,8 +10,8 @@ public class HttpRequestExecutorImpl implements HttpRequestExecutor {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
-    public <T> T execute(String requestUrl, Class<T> clazz) {
-        return restTemplate.getForObject(requestUrl, clazz);
+    public <T> T execute(URI uri, Class<T> clazz) {
+        return restTemplate.getForObject(uri, clazz);
     }
 
 }

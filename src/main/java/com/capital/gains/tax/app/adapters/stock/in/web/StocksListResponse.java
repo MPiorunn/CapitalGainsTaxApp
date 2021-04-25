@@ -1,5 +1,6 @@
 package com.capital.gains.tax.app.adapters.stock.in.web;
 
+import com.capital.gains.tax.app.adapters.marketstack.out.web.common.Pagination;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +12,5 @@ import lombok.NoArgsConstructor;
 class StocksListResponse {
 
     private List<String> stocks;
-    private int count;
+    private Pagination pagination;
 }

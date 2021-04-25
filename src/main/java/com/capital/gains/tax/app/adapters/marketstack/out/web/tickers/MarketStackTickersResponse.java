@@ -1,6 +1,7 @@
 package com.capital.gains.tax.app.adapters.marketstack.out.web.tickers;
 
 import com.capital.gains.tax.app.adapters.marketstack.out.web.common.Pagination;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class MarketStackTickersResponse {
 
     private Pagination pagination;
-    private TickerData[] data;
+    private List<TickerData> data;
 
     @Data
     @AllArgsConstructor

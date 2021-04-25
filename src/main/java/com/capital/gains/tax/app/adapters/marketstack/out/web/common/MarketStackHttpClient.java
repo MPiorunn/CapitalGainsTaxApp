@@ -1,18 +1,16 @@
 package com.capital.gains.tax.app.adapters.marketstack.out.web.common;
 
-import com.capital.gains.tax.app.adapters.infrastructure.HttpClient;
 import com.capital.gains.tax.app.adapters.infrastructure.HttpRequestExecutor;
+import com.capital.gains.tax.app.adapters.infrastructure.RequestUriBuilder;
 import com.capital.gains.tax.app.adapters.marketstack.out.web.tickers.MarketStackTickersResponse;
+import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 @RequiredArgsConstructor
-public class MarketStackHttpClient implements HttpClient {
+public class MarketStackHttpClient {
 
     @Value("${marketstack.key}")
     private String ACCESS_KEY;
@@ -25,20 +23,12 @@ public class MarketStackHttpClient implements HttpClient {
         if (search.length() < MINIMUM_CHARACTERS_FOR_SEARCHING) {
             throw new IllegalArgumentException(String.format(NEED_MORE_CHARACTERS, search));
         }
-        return sendRequest(TICKERS_ENDPOINT, MarketStackTickersResponse.class, prepareRequestParams(search));
-    }
-
-    private MultiValueMap<String, String> prepareRequestParams(String search) {
-        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
-        parameters.add("search", search);
-        parameters.add("exchange", "XNAS");
-        return parameters;
-    }
-
-    public <T> T sendRequest(String requestUrl, Class<T> clazz, MultiValueMap<String, String> parameters) {
-        parameters.add("access_key", ACCESS_KEY);
-        String uri = UriComponentsBuilder.fromHttpUrl(MarketStockConfig.BASE_URL + requestUrl)
-            .queryParams(parameters).toUriString();
-        return httpRequestExecutor.execute(uri, clazz);
+        URI uri = RequestUriBuilder.builder()
+            .fromUrl(MarketStockConfig.BASE_URL + TICKERS_ENDPOINT)
+            .queryParam("search", search)
+            .queryParam("exchange", "XNAS")
+            .queryParam("access_key", ACCESS_KEY)
+            .build();
+        return httpRequestExecutor.execute(uri, MarketStackTickersResponse.class);
     }
 }

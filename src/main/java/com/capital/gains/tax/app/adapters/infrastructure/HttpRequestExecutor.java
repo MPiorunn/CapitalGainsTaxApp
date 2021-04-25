@@ -1,6 +1,8 @@
 package com.capital.gains.tax.app.adapters.infrastructure;
 
+import java.net.URI;
+
 public interface HttpRequestExecutor {
 
-    <T> T execute(String requestUrl, Class<T> clazz);
+    <T> T execute(URI requestUrl, Class<T> clazz);
 }
