@@ -1,6 +1,6 @@
 package com.capital.gains.tax.app.adapters.currency.in.web;
 
-import com.capital.gains.tax.app.adapters.infrastructure.ApiConfig;
+import com.capital.gains.tax.app.config.ApiConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
