@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.adapters.infrastructure;
+package com.capital.gains.tax.app.config;
 
 import org.springframework.context.annotation.Configuration;
 
