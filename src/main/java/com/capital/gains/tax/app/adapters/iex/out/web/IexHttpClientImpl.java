@@ -3,7 +3,6 @@ package com.capital.gains.tax.app.adapters.iex.out.web;
 import com.capital.gains.tax.app.adapters.infrastructure.HttpRequestExecutor;
 import com.capital.gains.tax.app.adapters.infrastructure.RequestUriBuilder;
 import java.net.URI;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ public class IexHttpClientImpl implements IexHttpClient {
     private static final String DIVIDEND_URL = "/stock/{symbol}/dividends/1y";
 
     @Override
-    public List<Dividend> getLastYearDividendsForStock(String symbol) {
+    public Dividend[] getLastYearDividendsForStock(String symbol) {
 
         String requestUrl = IexConfig.BASE_URL + DIVIDEND_URL;
         URI uri = RequestUriBuilder.builder()
@@ -27,10 +26,10 @@ public class IexHttpClientImpl implements IexHttpClient {
             .queryParam("token", TOKEN)
             .build();
         Dividend[] dividends = requestExecutor.execute(uri, Dividend[].class);
-        if (dividends == null) {
+        if (dividends == null || dividends.length == 0) {
             throw new IllegalArgumentException(
                 String.format("No dividends found for company %s during last year", symbol));
         }
-        return List.of(dividends);
+        return dividends;
     }
 }
