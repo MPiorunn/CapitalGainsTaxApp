@@ -1,6 +1,9 @@
 package com.capital.gains.tax.app.adapters.iex.out.web;
 
+import static com.capital.gains.tax.app.commons.MathUtils.roundToTwoDecPlaces;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,8 +11,10 @@ import org.springframework.stereotype.Component;
 public class IexServiceImpl implements IexService {
 
     private final IexHttpClient httpClient;
-    private final Double WITHHOLDING_TAX = 0.15;
-    private final Double PL_WITHHOLDING_TAX = 0.04;
+    @Value("${tax.capital.gains.us}")
+    private Double WITHHOLDING_TAX;
+    @Value("${tax.capital.gains.pl}")
+    private Double PL_WITHHOLDING_TAX;
 
     @Override
     public DividendTaxResponse getTaxForDividendsFromLastYear(String stock, double stocksAmount) {
@@ -30,10 +35,5 @@ public class IexServiceImpl implements IexService {
             plWithholdingTax,
             dividends.length
         );
-    }
-
-
-    private double roundToTwoDecPlaces(double number) {
-        return Math.round(100 * number) / 100.00;
     }
 }

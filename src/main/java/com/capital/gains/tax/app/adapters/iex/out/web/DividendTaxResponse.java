@@ -3,7 +3,7 @@ package com.capital.gains.tax.app.adapters.iex.out.web;
 import lombok.Data;
 
 @Data
-public class DividendTaxResponse {
+class DividendTaxResponse {
 
     private final String stock;
     private final double stocksAmount;
