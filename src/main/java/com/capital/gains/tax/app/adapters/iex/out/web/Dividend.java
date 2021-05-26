@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-class Dividend {
+public class Dividend {
 
     private Double amount;
     private String currency;

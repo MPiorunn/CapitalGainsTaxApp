@@ -26,14 +26,16 @@ public class IexServiceImpl implements IexService {
 
         double withholdingTax = roundToTwoDecPlaces(sum * WITHHOLDING_TAX);
         double plWithholdingTax = roundToTwoDecPlaces(sum * PL_WITHHOLDING_TAX);
-        return new DividendTaxResponse(
-            stock,
-            stocksAmount,
-            sum,
-            withholdingTax,
-            sum - withholdingTax,
-            plWithholdingTax,
-            dividends.length
-        );
+
+        return DividendTaxResponse.builder()
+            .stock(stock)
+            .stocksAmount(stocksAmount)
+            .totalDividend(sum)
+            .withholdingTax(withholdingTax)
+            .income(sum - withholdingTax)
+            .remainingFourPercent(plWithholdingTax)
+            .amountOfDividends(dividends.length)
+            .dividends(dividends)
+            .build();
     }
 }

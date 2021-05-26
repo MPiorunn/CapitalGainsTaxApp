@@ -1,9 +1,16 @@
 package com.capital.gains.tax.app.adapters.iex.out.web;
 
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-class DividendTaxResponse {
+@Builder
+@Setter(value = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+public class DividendTaxResponse {
 
     private final String stock;
     private final double stocksAmount;
@@ -12,5 +19,7 @@ class DividendTaxResponse {
     private final double income;
     private final double remainingFourPercent;
     private final int amountOfDividends;
+    private final Dividend[] dividends;
+
 
 }

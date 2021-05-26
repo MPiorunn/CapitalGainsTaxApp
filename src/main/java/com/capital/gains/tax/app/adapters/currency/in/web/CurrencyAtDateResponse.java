@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-class CurrencyAtDateResponse {
+public class CurrencyAtDateResponse {
 
     private final Double price;
     private final LocalDate tradingDay;

@@ -15,11 +15,15 @@ public class CurrencyFacade {
 
     private final NbpCurrencyService nbpCurrencyService;
 
-    public CurrencyAtDateResponse getPreviousTradingDayPrice(String date) {
-        LocalDate tradeDay = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
+    public CurrencyAtDateResponse getPreviousTradingDayPrice(LocalDate tradeDay) {
         LocalDate previousTradingDay = DateUtils.getPreviousTradingDay(tradeDay);
         Double priceAtTradingDay = nbpCurrencyService.getCurrencyAtTradingDay(previousTradingDay);
         return new CurrencyAtDateResponse(priceAtTradingDay, tradeDay, previousTradingDay);
+    }
+
+    public CurrencyAtDateResponse getPreviousTradingDayPrice(String date) {
+        LocalDate tradeDay = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
+        return getPreviousTradingDayPrice(tradeDay);
     }
 
 }
