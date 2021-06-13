@@ -1,7 +1,7 @@
 package com.capital.gains.tax.app.adapters.iex.out.web;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import com.capital.gains.tax.app.external.http.iex.IexHttpClient;
+import com.capital.gains.tax.app.external.http.iex.IexHttpClientImpl;
 import org.junit.jupiter.api.Test;
 
 public class IexHttpClientImplTest {
