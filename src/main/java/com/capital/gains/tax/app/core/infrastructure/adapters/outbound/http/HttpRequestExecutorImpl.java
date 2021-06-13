@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.external.http;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http;
 
 import java.net.URI;
 import org.springframework.stereotype.Component;
@@ -13,5 +13,4 @@ public class HttpRequestExecutorImpl implements HttpRequestExecutor {
     public <T> T execute(URI uri, Class<T> clazz) {
         return restTemplate.getForObject(uri, clazz);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.external.http.iex;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.dividend;
 
 import java.time.LocalDate;
 import lombok.Data;

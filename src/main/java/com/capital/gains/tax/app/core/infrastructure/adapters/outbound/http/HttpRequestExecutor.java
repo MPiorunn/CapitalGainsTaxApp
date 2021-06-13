@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.external.http;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http;
 
 import java.net.URI;
 

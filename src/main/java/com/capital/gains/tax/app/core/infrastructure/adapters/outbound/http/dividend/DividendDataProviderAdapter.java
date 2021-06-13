@@ -1,7 +1,5 @@
-package com.capital.gains.tax.app.core.infrastructure.boundary.outbound.http.dividend;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.dividend;
 
-import com.capital.gains.tax.app.external.http.iex.DividendDto;
-import com.capital.gains.tax.app.external.http.iex.IexHttpClient;
 import com.capital.gains.tax.app.core.domain.dividend.Dividend;
 import com.capital.gains.tax.app.core.domain.dividend.DividendDataProvider;
 import java.util.Arrays;
@@ -14,11 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DividendDataProviderAdapter implements DividendDataProvider {
 
-    private final IexHttpClient httpClient;
+    private final IexHttpClient iexHttpClient;
 
     @Override
     public List<Dividend> getLastYearDividends(String stockSymbol) {
-        return Arrays.stream(httpClient.getLastYearDividendsForStock(stockSymbol))
+        return Arrays.stream(iexHttpClient.getLastYearDividendsForStock(stockSymbol))
             .map(this::map)
             .collect(Collectors.toList());
     }

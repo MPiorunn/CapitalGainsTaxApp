@@ -1,7 +1,6 @@
-package com.capital.gains.tax.app.core.infrastructure.boundary.outbound.http.currency;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.currency;
 
-import com.capital.gains.tax.app.external.http.nbp.NbpCurrencyDto;
-import com.capital.gains.tax.app.external.http.nbp.NbpHttpClient;
+import com.capital.gains.tax.app.commons.DateUtils;
 import com.capital.gains.tax.app.core.domain.currency.CurrencyDataProvider;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +14,11 @@ public class CurrencyDataProviderAdapter implements CurrencyDataProvider {
 
     @Override
     public Double getDollarPriceFromPreviousTradingDay(LocalDate date) {
-        NbpCurrencyDto responseEntity = nbpHttpClient.getCurrencyAtTradingDay(date.toString());
-        if (responseEntity == null || responseEntity.getRates() == null) {
+        LocalDate previousTradingDay = DateUtils.getPreviousTradingDay(date);
+        CurrencyDto currencyDto = nbpHttpClient.getCurrencyAtTradingDay(previousTradingDay.toString());
+        if (currencyDto == null || currencyDto.getRates() == null) {
             throw new IllegalArgumentException(String.format("Could not get dollar price from day %s", date));
         }
-        return responseEntity.getRates().get(0).getAsk();
+        return currencyDto.getRates().get(0).getAsk();
     }
 }

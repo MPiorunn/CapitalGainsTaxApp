@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.core.infrastructure.boundary.inbound.rest;
+package com.capital.gains.tax.app.core.infrastructure.adapters.inbound.rest;
 
 import com.capital.gains.tax.app.core.domain.cgt.CapitalGainsTax;
 import com.capital.gains.tax.app.core.domain.cgt.CapitalGainsTaxFacade;

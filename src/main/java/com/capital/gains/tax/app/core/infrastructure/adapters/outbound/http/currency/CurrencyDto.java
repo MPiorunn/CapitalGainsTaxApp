@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.external.http.nbp;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.currency;
 
 import java.util.List;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class NbpCurrencyDto {
+public class CurrencyDto {
 
     private String table;
     private String currency;
@@ -22,5 +22,4 @@ public class NbpCurrencyDto {
         private Double bid;
         private Double ask;
     }
-
 }

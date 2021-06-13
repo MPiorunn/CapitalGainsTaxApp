@@ -3,7 +3,7 @@ package com.capital.gains.tax.app.adapters.infrastructure;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.capital.gains.tax.app.external.http.RequestUriBuilder;
+import com.capital.gains.tax.app.commons.RequestUriBuilder;
 import java.net.URI;
 import org.junit.jupiter.api.Test;
 

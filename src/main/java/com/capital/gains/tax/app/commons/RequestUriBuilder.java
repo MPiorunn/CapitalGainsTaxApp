@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.external.http;
+package com.capital.gains.tax.app.commons;
 
 import java.net.URI;
 import java.util.HashMap;
