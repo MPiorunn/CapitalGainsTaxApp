@@ -38,6 +38,4 @@ public class RequestUriBuilder {
             .buildAndExpand(pathVariables)
             .toUri();
     }
-
-
 }

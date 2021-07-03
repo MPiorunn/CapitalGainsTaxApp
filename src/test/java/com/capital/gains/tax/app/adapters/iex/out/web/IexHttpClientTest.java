@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class IexHttpClientTest {
 
-
     @Test
     public void dsa(){
-        IexHttpClient client = new IexHttpClient(null);
-        client.getLastYearDividendsForStock("KO");
+//        IexHttpClient client = new IexHttpClient(null);
+//        client.getLastYearDividendsForStock("KO");
     }
 }

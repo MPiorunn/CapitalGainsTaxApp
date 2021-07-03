@@ -1,7 +1,7 @@
 package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.currency;
 
-import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.HttpRequestExecutor;
 import com.capital.gains.tax.app.commons.RequestUriBuilder;
+import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http.HttpRequestExecutor;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
