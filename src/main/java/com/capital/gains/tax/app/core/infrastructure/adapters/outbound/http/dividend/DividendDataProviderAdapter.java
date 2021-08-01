@@ -29,44 +29,4 @@ public class DividendDataProviderAdapter implements DividendDataProvider {
             .recordDate(dto.getRecordDate())
             .build();
     }
-
-    /*
-    jak zrobić generyczne cache?
-
-
-    dobrze by było mieć albo abstract klasę albo jakieś proxy albo AOP które
-
-    dodane do zwykłęgo http request executora:
-    - może zapisać to co zwraca API w bazie
-    - weźmie jako input to co bierze executor
-    - będzie na osobnym wątku najlepiej przez jakiś ThreadPool a nie @Async bo Konrad mówił ze to  fhui wolne
-
-
-    standardowe:
-    przychodzi request
-    bierzemy parametry i motamy nasz request
-    wysyłamy
-    odbieramy
-    obliczenia
-    odpowiedź na request
-
-
-    z cache:
-    przychodzi request
-    bierzemy parametry i sprawdzamy czy nie było wcześniej takiego
-    jak nie było to :
-        bierzemy parametry i motamy nasz request
-        wysyłamy
-        odbieramy
-        zapisujemy w bazie
-    jak był to:
-        zamiast requesta wyciągamy cache z bazy
-    obliczenia
-    odpowiedź na request
-
-
-    to co trzeba będzie niestety zrobić to pewnie ręcznie porobić jakies mongo reposy dla każdego rodzaju odpowiedzi
-
-
-     */
 }

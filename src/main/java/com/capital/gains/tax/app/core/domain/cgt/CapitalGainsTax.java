@@ -14,9 +14,11 @@ public class CapitalGainsTax {
 
     private final String stock;
     private final double stocksAmount;
+    private final int dividendAmount;
     private final double totalDividend;
     private final double withholdingTax;
-    private final double income;
     private final double remainingFourPercent;
+    private final double income;
+    private final double incomeInPoland;
     private final int amountOfDividends;
 }

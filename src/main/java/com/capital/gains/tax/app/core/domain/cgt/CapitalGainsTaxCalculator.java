@@ -29,14 +29,17 @@ class CapitalGainsTaxCalculator {
         double plWithholdingTax = 0.04;
         double totalWithholdingTax = roundToTwoDecPlaces(sum * withholdingTax);
         double totalPlWithholdingTax = roundToTwoDecPlaces(sum * plWithholdingTax);
-
+        double income = roundToTwoDecPlaces(sum - totalWithholdingTax);
+        double incomePl = roundToTwoDecPlaces(sum - totalPlWithholdingTax);
         return CapitalGainsTax.builder()
             .stock(stock)
             .stocksAmount(amount)
+            .dividendAmount(dividends.size())
             .totalDividend(sum)
             .withholdingTax(totalWithholdingTax)
-            .income(sum - totalWithholdingTax)
             .remainingFourPercent(totalPlWithholdingTax)
+            .income(income)
+            .incomeInPoland(incomePl)
             .amountOfDividends(dividends.size())
             .build();
     }

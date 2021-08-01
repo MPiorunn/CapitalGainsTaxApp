@@ -4,11 +4,11 @@ import com.capital.gains.tax.app.commons.DateUtils;
 import com.capital.gains.tax.app.core.domain.currency.CurrencyDataProvider;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
-@Slf4j
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class CurrencyDataProviderAdapter implements CurrencyDataProvider {

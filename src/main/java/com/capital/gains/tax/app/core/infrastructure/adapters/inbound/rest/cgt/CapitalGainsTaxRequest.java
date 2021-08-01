@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.core.infrastructure.adapters.inbound.rest;
+package com.capital.gains.tax.app.core.infrastructure.adapters.inbound.rest.cgt;
 
 import lombok.Data;
 

@@ -10,11 +10,11 @@ import lombok.Getter;
 public class CachedRequestData {
 
     private final UUID id;
-    private final URI uri;
+    private final String uri;
     private final String className;
     private final Object data;
 
-    public static CachedRequestData of(URI uri, String className, Object data) {
+    public static CachedRequestData of(String uri, String className, Object data) {
         return new CachedRequestData(UUID.randomUUID(), uri, className, data);
     }
 }

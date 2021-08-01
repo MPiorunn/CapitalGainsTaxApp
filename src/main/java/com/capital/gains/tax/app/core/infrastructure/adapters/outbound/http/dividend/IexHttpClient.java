@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class IexHttpClient {
 
-    private static final String DIVIDEND_URL = "/stock/{symbol}/dividends/1y";
     private static final String BASE_URL = "https://cloud.iexapis.com/v1";
+    private static final String DIVIDEND_URL = "/stock/{symbol}/dividends/1y";
+
     private final HttpRequestExecutor requestExecutor;
     @Value("${iex.token}")
     private String TOKEN;

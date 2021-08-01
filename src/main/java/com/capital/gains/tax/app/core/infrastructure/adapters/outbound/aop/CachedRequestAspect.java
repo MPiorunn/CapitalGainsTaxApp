@@ -1,16 +1,17 @@
 package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop;
 
+import com.capital.gains.tax.app.commons.UriTokenRemover;
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestFacade;
 import java.net.URI;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-@Slf4j
+@Log4j2
 @Aspect
 @Component
 @RequiredArgsConstructor
@@ -20,22 +21,23 @@ public class CachedRequestAspect {
 
     @Around("@annotation(request)")
     public Object around(ProceedingJoinPoint pjp, CachedRequest request) throws Throwable {
-        URI uri = getUriFromArgs(pjp.getArgs());
+        String uri = UriTokenRemover.removeToken(getUriFromArgs(pjp.getArgs()));
         Class<?> originalClass = getTypeFromArgs(pjp.getArgs());
-        Optional<?> cacheOptional = cachedRequestFacade.getCache(uri, originalClass);
+        Optional<?> cacheOptional = cachedRequestFacade.getCache(uri);
         if (cacheOptional.isPresent()) {
-            log.debug("Cache was found for URI {}", uri);
+            log.info("Cache was found for URI {}", uri);
             return Class.forName(originalClass.getName()).cast(cacheOptional.get());
         }
-        log.debug("No cache was found for URI {} , executing standard request", uri);
+        log.info("No cache was found for URI {} , executing standard request", uri);
         Object proceed = pjp.proceed();
         cachedRequestFacade.saveCache(uri, proceed);
-        log.debug("Request successful, storing request data in cache");
+        log.info("Request successful, storing request data in cache");
         return proceed;
     }
 
-    private URI getUriFromArgs(Object[] args) {
-        return (URI) args[0];
+    private String getUriFromArgs(Object[] args) {
+        URI uri = (URI) args[0];
+        return uri.toString();
     }
 
     private Class<?> getTypeFromArgs(Object[] args) {
