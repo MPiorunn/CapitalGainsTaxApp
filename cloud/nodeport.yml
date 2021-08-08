@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cgt-np
+  labels:
+    app: cgt
+    type: backend
+
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 8080
+      port: 8080
+      nodePort: 30880
+  selector:
+    app: cgt
+    type: backend
