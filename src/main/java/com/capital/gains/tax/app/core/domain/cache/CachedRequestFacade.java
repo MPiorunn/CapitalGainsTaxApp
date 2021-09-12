@@ -1,6 +1,5 @@
 package com.capital.gains.tax.app.core.domain.cache;
 
-import java.net.URI;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -26,13 +25,5 @@ public class CachedRequestFacade {
     public void saveCache(String uri, Object data) {
         CachedRequestData cachedRequestData = CachedRequestData.of(uri, data.getClass().getName(), data);
         cachedRequestDataRepository.save(cachedRequestData);
-    }
-
-    public void clearCache() {
-
-    }
-
-    public void getAllCache() {
-
     }
 }

@@ -1,6 +1,5 @@
 package com.capital.gains.tax.app.core.domain.cache;
 
-import java.net.URI;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

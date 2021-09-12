@@ -23,7 +23,7 @@ public class DateUtils {
         }
     }
 
-    private static boolean willBeIndependenceDay(LocalDate localDate) {
+    private boolean willBeIndependenceDay(LocalDate localDate) {
         return localDate.getMonth().equals(Month.NOVEMBER) && localDate.getDayOfMonth() == 12;
     }
 }

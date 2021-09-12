@@ -2,7 +2,6 @@ package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop;
 
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestData;
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestDataRepository;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,6 +28,7 @@ public class CachedDataProvider implements CachedRequestDataRepository {
         return Collections.unmodifiableList(cachedRequestData);
     }
 
+    @Override
     public void clearAll() {
         cachedRequestData.clear();
     }
