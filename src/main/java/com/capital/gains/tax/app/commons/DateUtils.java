@@ -12,7 +12,7 @@ public class DateUtils {
         if (willBeIndependenceDay(localDate)) {
             return localDate.minusDays(2);
         }
-        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+        var dayOfWeek = localDate.getDayOfWeek();
         switch (dayOfWeek) {
             case MONDAY:
                 return localDate.minusDays(3);

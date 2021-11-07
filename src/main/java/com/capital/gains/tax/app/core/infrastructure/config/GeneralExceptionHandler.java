@@ -18,7 +18,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({IllegalArgumentException.class})
     @ResponseBody
     public ResponseEntity<Object> handleIllegalInputParameters(Exception ex, WebRequest request) {
-        BadRequestResponse badRequestResponse = new BadRequestResponse(ex.getLocalizedMessage(),
+        var badRequestResponse = new BadRequestResponse(ex.getLocalizedMessage(),
             ((ServletWebRequest) request).getRequest().getRequestURI());
 
         return handleExceptionInternal(ex, badRequestResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST,

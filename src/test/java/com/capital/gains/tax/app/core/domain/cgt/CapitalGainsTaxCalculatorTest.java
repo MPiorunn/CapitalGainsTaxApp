@@ -28,7 +28,7 @@ public class CapitalGainsTaxCalculatorTest {
 
     @Test
     public void xD() {
-        assertNotNull(calculator);
+        assertNotNull(null);
     }
 
 }

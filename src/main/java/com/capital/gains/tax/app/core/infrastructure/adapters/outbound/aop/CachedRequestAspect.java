@@ -36,8 +36,7 @@ public class CachedRequestAspect {
     }
 
     private String getUriFromArgs(Object[] args) {
-        URI uri = (URI) args[0];
-        return uri.toString();
+        return args[0].toString();
     }
 
     private Class<?> getTypeFromArgs(Object[] args) {
