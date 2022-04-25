@@ -1,8 +1,7 @@
-package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.cache;
 
 import com.capital.gains.tax.app.commons.UriTokenRemover;
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestFacade;
-import java.net.URI;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

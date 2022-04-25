@@ -25,7 +25,7 @@ public class CacheController {
 
     @DeleteMapping("/cache")
     public void deleteCache() {
-        log.info("Cache deleted");
         cacheRepo.clearAll();
+        log.info("Cache deleted");
     }
 }

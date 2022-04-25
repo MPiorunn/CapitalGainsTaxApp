@@ -4,7 +4,7 @@ import com.capital.gains.tax.app.core.domain.cache.CachedRequestFacade;
 import com.capital.gains.tax.app.core.domain.cgt.CapitalGainsTaxFacade;
 import com.capital.gains.tax.app.core.domain.currency.CurrencyDataProvider;
 import com.capital.gains.tax.app.core.domain.dividend.DividendDataProvider;
-import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.CachedDataProvider;
+import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.cache.CachedDataProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
 package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.http;
 
-import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.CachedRequest;
+import com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.cache.CachedRequest;
 import java.net.URI;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

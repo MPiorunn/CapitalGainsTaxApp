@@ -16,7 +16,19 @@ class CapitalGainsTaxCalculator {
     private final CurrencyDataProvider currencyDataProvider;
 
     public CapitalGainsTax calculateCapitalGainsTax(String stock, Double amount) {
-        List<Dividend> dividends = dividendDataProvider.getLastYearDividends(stock);
+        /*
+            private final Double amount;
+    private final LocalDate declaredDate;
+    private final LocalDate paymentDate;
+    private final LocalDate recordDate;
+         */
+        List<Dividend> dividends = List.of(Dividend.builder()
+            .amount(123.1)
+            .declaredDate(LocalDate.now())
+            .paymentDate(LocalDate.now())
+            .paymentDate(LocalDate.now())
+            .build());
+//        List<Dividend> dividends = dividendDataProvider.getLastYearDividends(stock);
 
         double sum = 0;
         for (Dividend dividend : dividends) {

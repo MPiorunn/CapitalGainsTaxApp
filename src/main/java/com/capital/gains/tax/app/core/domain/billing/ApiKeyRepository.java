@@ -2,9 +2,9 @@ package com.capital.gains.tax.app.core.domain.billing;
 
 import java.util.Optional;
 
-interface ApiKeyStorage {
+public interface ApiKeyRepository {
 
-    ApiKey save(ApiKey apiKey);
+    void save(ApiKey apiKey);
 
     Optional<ApiKey> findByApiKey(String apiKeyId);
 }

@@ -26,9 +26,9 @@ public class CapitalGainsTaxCalculatorTest {
         calculator = new CapitalGainsTaxCalculator(dividendDataProvider, currencyDataProvider);
     }
 
-    @Test
-    public void xD() {
-        assertNotNull(null);
-    }
+//    @Test
+//    public void xD() {
+//        assertNotNull(null);
+//    }
 
 }

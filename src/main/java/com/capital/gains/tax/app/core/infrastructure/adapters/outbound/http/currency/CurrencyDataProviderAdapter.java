@@ -28,12 +28,12 @@ public class CurrencyDataProviderAdapter implements CurrencyDataProvider {
     private CurrencyDto getPriceFromPreviousTradingDay(LocalDate previousTradingDay) {
         CurrencyDto currencyDto;
         try {
-            currencyDto = nbpHttpClient.getCurrencyAtTradingDay(previousTradingDay.toString());
+            currencyDto = nbpHttpClient.getCurrencyAtTradingDay(previousTradingDay);
         } catch (HttpClientErrorException e) {
             LocalDate earlierDay = DateUtils.getPreviousTradingDay(previousTradingDay);
             log.error("Got error : {} for date : {} , trying previous trading day : {}", e.getLocalizedMessage(),
                 previousTradingDay, earlierDay);
-            currencyDto = nbpHttpClient.getCurrencyAtTradingDay(earlierDay.toString());
+            currencyDto = nbpHttpClient.getCurrencyAtTradingDay(earlierDay);
         }
         return currencyDto;
     }

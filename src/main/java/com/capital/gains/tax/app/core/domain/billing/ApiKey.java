@@ -5,15 +5,20 @@ import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 
-@Getter
 @Builder
-class ApiKey {
+public class ApiKey {
 
+    @Getter
     private UUID id;
     private LocalDateTime createdAt;
     private LocalDateTime validTo;
+    @Getter
     private String value;
     private boolean active;
+
+    boolean isActive() {
+        return active && validTo.isAfter(LocalDateTime.now());
+    }
 
     void activate() {
         this.active = true;

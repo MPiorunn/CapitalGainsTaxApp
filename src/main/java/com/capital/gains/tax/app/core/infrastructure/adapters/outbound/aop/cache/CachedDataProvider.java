@@ -1,4 +1,4 @@
-package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop;
+package com.capital.gains.tax.app.core.infrastructure.adapters.outbound.aop.cache;
 
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestData;
 import com.capital.gains.tax.app.core.domain.cache.CachedRequestDataRepository;
