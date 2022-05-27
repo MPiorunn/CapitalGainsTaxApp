@@ -3,6 +3,7 @@ package pl.piorun.capital.billing.api.key;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 import pl.piorun.capital.billing.utils.CryptoUtils;
 
 public interface ApiKeyRepository {
@@ -11,6 +12,7 @@ public interface ApiKeyRepository {
 
     Optional<ApiKey> findByApiKey(String apiKeyId);
 
+    @Service
     class ApiKeyRepositoryImpl implements ApiKeyRepository {
 
         private final Set<ApiKey> apiKeys = new HashSet<>();

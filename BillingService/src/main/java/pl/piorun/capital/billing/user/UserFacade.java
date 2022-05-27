@@ -4,8 +4,10 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.piorun.capital.billing.user.User.Billing;
 
+@Service
 @RequiredArgsConstructor
 public class UserFacade {
 
@@ -15,7 +17,7 @@ public class UserFacade {
         return userRepository.getUsers();
     }
 
-    public UUID createUser(String username) {
+    public User createUser(String username) {
         if (userRepository.existsByUsername(username)) {
             throw new IllegalArgumentException(String.format("Username %s already taken", username));
         }
@@ -26,7 +28,7 @@ public class UserFacade {
             .billing(Billing.STANDARD)
             .build();
         userRepository.save(user);
-        return user.getApiKeyId();
+        return user;
     }
 
     public Optional<User> findById(UUID id) {

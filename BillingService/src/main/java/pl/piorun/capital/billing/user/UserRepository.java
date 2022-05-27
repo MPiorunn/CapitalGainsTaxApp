@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import org.springframework.stereotype.Service;
 
 public interface UserRepository {
 
@@ -19,6 +20,7 @@ public interface UserRepository {
 
     Collection<User> getUsers();
 
+    @Service
     class UserRepositoryImpl implements UserRepository {
 
         private final Set<User> users = new HashSet<>();

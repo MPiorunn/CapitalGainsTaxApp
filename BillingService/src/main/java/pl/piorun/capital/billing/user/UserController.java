@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public UUID createUser(@RequestBody String username) {
+    public User createUser(@RequestBody String username) {
         return userFacade.createUser(username);
     }
 
