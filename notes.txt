@@ -1,4 +1,0 @@
-Co chcemy osiągnąć na ten moment?
-
-Zrobić prosty endpoint który wywoułje requesta do API NBP, przyjmuje jako parametr datę i dla tej daty zwraca kurs dolara
-
