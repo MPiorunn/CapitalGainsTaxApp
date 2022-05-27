@@ -19,7 +19,7 @@ public class ApiKeyController {
         return apiKeyFacade.generateApiKey(UUID.fromString(userId));
     }
 
-    @GetMapping("/apiKeys/{apiKey}/activate")
+    @GetMapping("/apiKeys/{apiKey}/active")
     public boolean isKeyValid(@PathVariable String apiKey) {
         return apiKeyFacade.checkIfKeyIsActive(apiKey);
     }

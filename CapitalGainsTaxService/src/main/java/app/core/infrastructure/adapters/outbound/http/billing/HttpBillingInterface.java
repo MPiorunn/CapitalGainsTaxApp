@@ -3,19 +3,27 @@ package app.core.infrastructure.adapters.outbound.http.billing;
 import app.core.domain.billing.BillingInterface;
 import java.net.URI;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 @RequiredArgsConstructor
 public class HttpBillingInterface implements BillingInterface {
 
-    private final URI billingUri = URI.create("localhost:8081/apiKeys");
+    private static final String BASE_BILLING_URL = "http://localhost:8081/apiKeys";
+    private static final String IS_KEY_ACTIVE_URL = BASE_BILLING_URL + "/{apiKey}/active";
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
     public boolean canApplyBilling(UUID apiKey) {
+        URI billingUri = UriComponentsBuilder.fromHttpUrl(IS_KEY_ACTIVE_URL)
+            .buildAndExpand(apiKey)
+            .toUri();
         BillingDto billingDto = restTemplate.getForObject(billingUri, BillingDto.class);
         if (billingDto == null) {
             return false;
@@ -25,11 +33,13 @@ public class HttpBillingInterface implements BillingInterface {
 
     @Override
     public void applyBilling(UUID apiKey) {
-        restTemplate.postForLocation(billingUri, apiKey);
+        System.out.println("POSTREEE HEEHEHEH");
+//        restTemplate.postForLocation(billingUri, apiKey);
     }
 
+    @Data
     private static class BillingDto {
 
-        boolean active;
+        final boolean active;
     }
 }
