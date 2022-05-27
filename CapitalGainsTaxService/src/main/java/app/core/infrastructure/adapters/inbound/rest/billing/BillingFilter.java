@@ -21,7 +21,11 @@ public class BillingFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !request.getRequestURL().toString().contains("cgt");
+        return isHealthRequest(request);
+    }
+
+    private boolean isHealthRequest(HttpServletRequest request) {
+        return request.getRequestURL().toString().contains("health");
     }
 
     @Override
