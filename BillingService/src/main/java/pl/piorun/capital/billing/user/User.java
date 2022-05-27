@@ -32,6 +32,7 @@ public class User {
         }
 
         Billing(double price) {
+            this.price = price;
         }
     }
 }

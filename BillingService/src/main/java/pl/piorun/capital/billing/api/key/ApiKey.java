@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
+import pl.piorun.capital.billing.utils.CryptoUtils;
 
 @Builder
 public class ApiKey {
@@ -26,5 +27,15 @@ public class ApiKey {
 
     void deactivate() {
         this.active = false;
+    }
+
+    public static ApiKey generateFresh(String apiKeyValue) {
+        return ApiKey.builder()
+            .id(UUID.randomUUID())
+            .value(CryptoUtils.hash(apiKeyValue))
+            .createdAt(LocalDateTime.now())
+            .validTo(LocalDateTime.now().plusMonths(1))
+            .active(false)
+            .build();
     }
 }

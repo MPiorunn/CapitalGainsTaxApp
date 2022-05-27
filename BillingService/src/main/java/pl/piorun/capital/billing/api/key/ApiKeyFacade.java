@@ -1,14 +1,12 @@
 package pl.piorun.capital.billing.api.key;
 
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.piorun.capital.billing.user.User;
 import pl.piorun.capital.billing.user.UserRepository;
-import pl.piorun.capital.billing.utils.CryptoUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -46,13 +44,7 @@ public class ApiKeyFacade {
         User user = userRepository.findById(userId).orElseThrow();
 
         String apiKeyValue = UUID.randomUUID().toString();
-        ApiKey apiKey = ApiKey.builder()
-            .id(UUID.randomUUID())
-            .value(CryptoUtils.hash(apiKeyValue))
-            .createdAt(LocalDateTime.now())
-            .validTo(LocalDateTime.now().plusMonths(1))
-            .active(false)
-            .build();
+        ApiKey apiKey = ApiKey.generateFresh(apiKeyValue);
 
         apiKeyRepository.save(apiKey);
 
